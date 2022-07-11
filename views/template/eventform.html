@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Font  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@500&display=swap" rel="stylesheet">
+    <!-- Bootstrap CDN  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Event Management</title>
+    <style>
+         body {
+    font-family: 'Recursive', sans-serif;
+    font-size: larger;
+    background-color: #000000;
+    color:rgb(255, 255, 255);
+  }    
+ 
+  .fourth {
+  border-color: #f1c40f;
+  color: #fff;
+  background-image: -webkit-linear-gradient(45deg, #f1c40f 50%, transparent 50%);
+  background-image: linear-gradient(45deg, #f1c40f 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+}
+.fourth:hover {
+  background-position: 0;
+}
+        .customborder {
+            border-radius: 2%;
+            border: 2px solid #f1c40f;
+        }
+        .bg-custom-2 {
+background-image: linear-gradient(15deg, #5dbbf2 0%, #161818 100%);
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- navbar  -->
+    <nav class="navbar navbar-dark navbar-expand-lg bg-custom-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Event Management System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="">Signup</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar end  -->
+
+
+    <div class="container">
+        <h1 class="text-center p-3">Create Your Account</h1>
+        <div style="margin: 0 auto;" class="col-12 col-md-6 col-lg-5 p-5 customborder">
+
+            <% if(typeof err !='undefined' ){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong> Error </strong>
+                    <%= err %>.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <% } %>
+
+                    <form action="/signup" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <div class="mb-3">
+                            <label for="email">Enter Your Email</label>
+                            <input type="email" class="form-control form-control-lg" name="email" id="email"
+                                autocomplete="off" placeholder="Email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="username">Choose A Username</label>
+                            <input type="text" class="form-control form-control-lg" name="username" id="username"
+                                autocomplete="off" placeholder="Username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password">Choose A Password</label>
+                            <input type="password" class="form-control form-control-lg" name="password" id="password"
+                                autocomplete="off" placeholder="Password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmpassword">Confirm Your Password</label>
+                            <input type="password" class="form-control form-control-lg" name="confirmpassword"
+                                id="confirmpassword" autocomplete="off" placeholder="Confirm Password">
+                        </div>
+                        <div class="d-grid gap-3 mb-3">
+                            <input type="submit" class="btn btn-lg fourth" value="Create An Account">
+                           
+                        </div>
+                        <p>Already Registered ? <a class="card-link" href="/login">LOGIN Here</a> </p>
+                    </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
